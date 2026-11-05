@@ -873,19 +873,21 @@ footer .logo {
   nav {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 70px;
     left: 0;
     right: 0;
-    background: rgba(21, 18, 26, 0.97);
+    background: #15121A;
+    background: rgba(21, 18, 26, 0.98);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 105;
     padding: 30px 6vw;
     border-bottom: 2px solid var(--line);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
   }
 
   nav.open {
-    display: block;
+    display: block !important;
   }
 
   nav ul {

@@ -50,11 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('nav');
 
   if (navToggle && nav) {
-    navToggle.addEventListener('click', () => {
+    const toggleMenu = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       const isOpen = nav.classList.toggle('open');
       navToggle.classList.toggle('active', isOpen);
       navToggle.setAttribute('aria-expanded', isOpen);
-    });
+    };
+
+    navToggle.addEventListener('click', toggleMenu);
 
     // Fecha o menu ao clicar em um link
     nav.querySelectorAll('a').forEach(link => {
@@ -63,6 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.classList.remove('active');
         navToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Fecha o menu se clicar fora dele
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('open') && !nav.contains(e.target) && !navToggle.contains(e.target)) {
+        nav.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
