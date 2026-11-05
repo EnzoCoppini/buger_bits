@@ -45,4 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Menu hamburger mobile ---------- */
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('nav');
+
+  if (navToggle && nav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      navToggle.classList.toggle('active', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Fecha o menu ao clicar em um link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
 });
